@@ -1,14 +1,29 @@
 {
   "name": "wxpay-types",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
+  "description": "微信支付接口类型定义",
   "main": "types/index.ts",
   "module": "types/index.ts",
   "scripts": {
     "gen": "tsx bin/index.ts"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "wxpay",
+    "wx",
+    "wxpayment",
+    "wxpay-types",
+    "微信支付接口类型定义"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xeajs/wxpay-types.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xeajs/wxpay-types/issues"
+  },
+  "homepage": "https://github.com/xeajs/wxpay-types#readme",
+  "author": "yejiang.xie@weibie.cc",
   "license": "ISC",
   "dependencies": {
     "@types/crawler": "^1.2.3",
