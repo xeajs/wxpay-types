@@ -1,0 +1,19 @@
+{
+  "name": "wxpay-types",
+  "version": "1.0.0",
+  "description": "",
+  "main": "types/index.ts",
+  "module": "types/index.ts",
+  "scripts": {
+    "gen": "tsx bin/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/crawler": "^1.2.3",
+    "crawler": "^1.4.0",
+    "tsx": "^3.12.10",
+    "yaml": "^2.3.2"
+  }
+}
