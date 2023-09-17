@@ -1,0 +1,42 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "strict": true,
+    "noImplicitAny": false,
+    "strictFunctionTypes": false,
+    "newLine": "lf",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "module": "esnext",
+    "target": "esnext",
+    "sourceMap": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "diagnostics": false,
+    "extendedDiagnostics": false,
+    "pretty": true,
+    "preserveWatchOutput": true,
+    "moduleResolution": "node",
+    "traceResolution": false,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "esModuleInterop": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "typeRoots": ["node_modules/@types", "typings"],
+    "lib": ["ES6", "ESNext"],
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"]
+    }
+  },
+  "include": ["src", "typings"],
+  "exclude": ["node_modules"]
+}

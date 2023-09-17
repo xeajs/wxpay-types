@@ -1,0 +1,44 @@
+{
+  "files.eol": "\n",
+  "editor.tabSize": 2,
+  "css.validate": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.formatOnSave": true,
+  /** 默认格式化程序 使用 prettier */
+  "editor.defaultFormatter": "rome.rome",
+  "files.associations": {
+    "*.css": "css",
+    "*.env": "dotenv",
+    ".env.*": "dotenv"
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rome.rome"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rome.rome"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true,
+  },
+  "problems.autoReveal": true,
+  "typescript.suggest.autoImports": true,
+  "prettier.enable": false,
+  "eslint.enable": false,
+  /** 让函数(名)和后面的括号之间加个空格 */
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+}

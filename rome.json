@@ -1,10 +1,7 @@
 {
   "$schema": "./node_modules/rome/configuration_schema.json",
   "files": {
-    "ignore": [
-      "node_modules",
-      "dist"
-    ]
+    "ignore": ["node_modules", "dist"]
   },
   "javascript": {
     "formatter": {
@@ -29,7 +26,7 @@
   },
   "formatter": {
     "enabled": true,
-    "lineWidth": 120,
+    "lineWidth": 180,
     "indentSize": 2,
     "indentStyle": "space"
   }

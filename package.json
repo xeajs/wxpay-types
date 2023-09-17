@@ -6,8 +6,8 @@
   "module": "types/index.ts",
   "types": "types/index.ts",
   "scripts": {
-    "gen": "tsx bin/index.ts",
-    "lint": "tsc types/index.ts --noEmit --pretty"
+    "gen": "tsx src/index.ts",
+    "lint": "tsc types/*.ts --noEmit --pretty"
   },
   "keywords": [
     "wxpay",
@@ -34,9 +34,11 @@
   ],
   "devDependencies": {
     "@types/crawler": "1.2.3",
+    "@types/fs-extra": "11.0.2",
     "crawler": "1.4.0",
+    "fs-extra": "11.1.1",
     "tsx": "3.12.10",
-    "yaml": "2.3.2",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "yaml": "2.3.2"
   }
 }
