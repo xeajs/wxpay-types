@@ -2,13 +2,25 @@ import YAML from "yaml";
 import fs from "fs";
 import path from "path";
 
-const fillPath = path.resolve(process.cwd(), "config/fill.yml");
-const urlPath = path.resolve(process.cwd(), "config/url.yml");
-const fills = YAML.parse(fs.readFileSync(fillPath, "utf8"));
-const urls = YAML.parse(fs.readFileSync(urlPath, "utf8"));
+const actionsPath = path.resolve(process.cwd(), "actions.yml");
+const noticesPath = path.resolve(process.cwd(), "notices.yml");
+const actions = YAML.parse(fs.readFileSync(actionsPath, "utf8"));
+const notices = YAML.parse(fs.readFileSync(noticesPath, "utf8"));
+
+let extendFills: Record<string, string> = {};
+const urlActions: string[] = [];
+const urlNotices: string[] = [];
+actions.forEach((action) => {
+  extendFills = { ...extendFills, ...action.extends };
+  urlActions.push(action.href);
+});
+notices.forEach((notice) => {
+  extendFills = { ...extendFills, ...notice.extends };
+  urlNotices.push(notice.href);
+});
 
 export const yml = {
-  actions: urls.actions as string[],
-  notices: urls.notices as string[],
-  fills: fills as Record<string, string>,
+  actions: urlActions,
+  notices: urlNotices,
+  fills: extendFills,
 };

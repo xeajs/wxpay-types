@@ -80,3 +80,38 @@ export function getTypes(desc: DescProps, $: Ins) {
 
   return types;
 }
+
+export function getNoticesTypes(desc: DescProps, $: Ins) {
+  // 通知参数请求参数
+  const $ctxBodyFields = $("#通知参数~.columns").eq(0).find(".left > .fields");
+  // 通知请求参数解密
+  const $ctxBodyDecryptFields = $("#通知参数~.columns")
+    .eq(1)
+    .find(".left > .fields");
+
+  const types: Props[] = [];
+
+  [$ctxBodyFields, $ctxBodyDecryptFields].forEach((fields, index) => {
+    const name = index === 0 ? "CtxBodyFields" : "CtxBodyDecryptFields";
+    const description = index === 0 ? "通知参数" : "resource解密后字段";
+    const required = true;
+    const type = "object";
+    const children: Props[] = [];
+    fields.find(".field-list .field").each((index, ele) => {
+      const name = $(ele).find(".field-title .field-name").text();
+      const required = $(ele).find(".field-title .field-required").text();
+      const type = $(ele).find(".field-title .field-tags").text();
+      const description = $(ele).find(".field-desc").text();
+      children.push({
+        name,
+        required: required === "必填",
+        type,
+        description,
+      });
+    });
+    const typeName = `${desc.pathName}${name}`;
+    types.push({ name: typeName, description, required, type, children });
+  });
+
+  return types;
+}

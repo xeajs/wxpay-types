@@ -9,6 +9,10 @@ export interface Props {
   pathName: string;
   domain: string;
 }
+const firstUp = function (str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
 type Ins = Crawler.CrawlerRequestResponse["$"];
 export function getDesc($: Ins, uri: string): Props {
   // 标题
@@ -38,9 +42,35 @@ export function getDesc($: Ins, uri: string): Props {
     )
     .text();
 
-  const firstUp = function (str: string) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
+  const pathName =
+    uri
+      .split("/")
+      .at(-1)
+      ?.split(".")[0]
+      .split("-")
+      .map((d) => firstUp(d))
+      .join("") || "";
+
+  return { title, subTitle, supportMerch, method, path, pathName, domain };
+}
+
+export function getNoticesDesc($: Ins, uri: string): Props {
+  // 标题
+  const title = $(".content-title").text();
+  //   子标题
+  const subTitle = $("#main-content").find("p").eq(0).text();
+  // 接口说明
+  const $desc = $("#接口说明").next().eq(0);
+
+  // 支持商户
+  const supportMerch = "";
+  // 请求方式
+  const method = "POST";
+  // 请求地址
+  const path = "";
+  // 域名
+  const domain = "";
+
   const pathName =
     uri
       .split("/")

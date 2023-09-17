@@ -14,6 +14,7 @@ function append(str: string) {
 function tsType(type: string) {
   if (type === "integer") return "number";
   if (/string\(/.test(type)) return "string";
+  if (type === "array") return "any[]";
   if (/array\[/.test(type)) return `${type.replace(/array|\[|\]/g, "")}[]`;
   return type;
 }
