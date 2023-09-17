@@ -1,6 +1,6 @@
 {
   "name": "wxpay-types",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "微信支付接口类型定义",
   "main": "types/index.ts",
   "module": "types/index.ts",
@@ -35,6 +35,7 @@
   "devDependencies": {
     "@types/crawler": "1.2.3",
     "@types/fs-extra": "11.0.2",
+    "cheerio": "1.0.0-rc.12",
     "crawler": "1.4.0",
     "fs-extra": "11.1.1",
     "tsx": "3.12.10",
