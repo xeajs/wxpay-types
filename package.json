@@ -1,6 +1,6 @@
 {
   "name": "wxpay-types",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "微信支付接口类型定义",
   "main": "types/index.ts",
   "module": "types/index.ts",
