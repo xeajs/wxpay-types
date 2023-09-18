@@ -1,5 +1,5 @@
 /**
- * @title JSAPI下单
+ * @title 小程序下单
  * @subTitle 商户系统先调用该接口在微信支付服务后台生成预支付交易单，返回正确的预支付交易会话标识后再按Native、JSAPI、APP等不同场景生成交易串调起支付。
  * @支持的商户 
  * @path 
@@ -58,7 +58,7 @@ export type SettleInfo = {
   profit_sharing?: boolean
 }
 /** @description 包体参数 */
-export type JsapiPrepayReqBody = {
+export type MiniPrepayReqBody = {
   /** 【公众号ID】 公众号ID */
   appid: string
   /** 【直连商户号】 直连商户号 */
@@ -89,7 +89,7 @@ export type JsapiPrepayReqBody = {
   settle_info?: SettleInfo
 }
 /** @description 接口响应 */
-export type JsapiPrepayRes = {
+export type MiniPrepayRes = {
   /** 【预支付交易会话标识】 预支付交易会话标识。用于后续接口调用中使用，该值有效期为2小时 */
   prepay_id: string
 }

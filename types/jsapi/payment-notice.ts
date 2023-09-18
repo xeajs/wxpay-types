@@ -5,55 +5,49 @@
  * @path 
  */
 
-export type CommReqAmountInfo = {
-  /** 【总金额】 订单总金额，单位为分。 */
-  total: number
-  /** 【货币类型】 CNY：人民币，境内商户号仅支持人民币。 */
-  currency?: string
-}
-export type JsapiReqPayerInfo = {
-  /** 【用户标识】 用户在普通商户AppID下的唯一标识。 下单前需获取到用户的OpenID，详见OpenID获取 */
-  openid: string
-}
-export type OrderDetail = {
-  /** 【订单原价】 1、商户侧一张小票订单可能被分多次支付，订单原价用于记录整张小票的交易金额。2、当订单原价与支付金额不相等，则不享受优惠。3、该字段主要用于防止同一张小票分多次支付，以享受多次优惠的情况，正常支付订单不必上传此参数。 */
-  cost_price?: number
-  /** 【商品小票ID】 商家小票ID */
-  invoice_id?: string
-  /** 【单品列表】 单品列表信息条目个数限制：【1，6000】 */
-  goods_detail: GoodsDetail[]
-}
-export type GoodsDetail = {
-  /** 【商户侧商品编码】 由半角的大小写字母、数字、中划线、下划线中的一种或几种组成。 */
-  merchant_goods_id: string
-  /** 【微信支付商品编码】 微信支付定义的统一商品编号（没有可不传） */
-  wechatpay_goods_id?: string
-  /** 【商品名称】 商品的实际名称 */
-  goods_name?: string
-  /** 【商品数量】 用户购买的数量 */
-  quantity: number
-  /** 【商品单价】 单位为：分。如果商户有优惠，需传输商户优惠后的单价(例如：用户对一笔100元的订单使用了商场发的纸质优惠券100-50，则活动商品的单价应为原单价-50) */
-  unit_price: number
-}
-export type CommReqSceneInfo = {
-  /** 【用户终端IP】 用户的客户端IP，支持IPv4和IPv6两种格式的IP地址。 */
-  payer_client_ip: string
-  /** 【商户端设备号】 商户端设备号（门店号或收银设备ID）。 */
-  device_id?: string
-  /** 【商户门店信息】 商户门店信息 */
-  store_info?: StoreInfo
-}
-export type StoreInfo = {
-  /** 【门店编号】 商户侧门店编号 */
+/** @description 通知参数 */
+export type BodyFields = {
+  /** 通知的唯一ID。 */
   id: string
-  /** 【门店名称】 商户侧门店名称 */
-  name?: string
-  /** 【地区编码】 地区编码，详细请见省市区编号对照表。 */
-  area_code?: string
-  /** 【详细地址】 详细的商户门店地址 */
-  address?: string
+  /** 通知创建的时间，遵循rfc3339标准格式，格式为yyyy-MM-DDTHH:mm:ss+TIMEZONE，yyyy-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.表示时分秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35+08:00表示北京时间2015年05月20日13点29分35秒。 */
+  create_time: string
+  /** 通知的类型，支付成功通知的类型为TRANSACTION.SUCCESS。 */
+  event_type: string
+  /** 通知的资源数据类型，支付成功通知为encrypt-resource。 */
+  resource_type: string
+  /** 通知资源数据。 */
+  resource: object
+  /** 回调摘要 */
+  summary: string
 }
-export type SettleInfo = {
-  /** 【是否指定分账】 是否指定分账，枚举值:true：是false：否 */
-  profit_sharing?: boolean
+/** @description resource解密后字段 */
+export type BodyDecryptFields = {
+  /** 直连商户申请的公众号或移动应用AppID。 */
+  appid: string
+  /** 商户的商户号，由微信支付生成并下发。 */
+  mchid: string
+  /** 商户系统内部订单号，可以是数字、大小写字母_-*的任意组合且在同一个商户号下唯一。 */
+  out_trade_no: string
+  /** 微信支付系统生成的订单号。 */
+  transaction_id: string
+  /** 交易类型，枚举值：JSAPI：公众号支付NATIVE：扫码支付App：App支付MICROPAY：付款码支付MWEB：H5支付FACEPAY：刷脸支付 */
+  trade_type: string
+  /** 交易状态，枚举值：SUCCESS：支付成功REFUND：转入退款NOTPAY：未支付CLOSED：已关闭REVOKED：已撤销（付款码支付）USERPAYING：用户支付中（付款码支付）PAYERROR：支付失败(其他原因，如银行返回失败) */
+  trade_state: string
+  /** 交易状态描述。 */
+  trade_state_desc: string
+  /** 银行类型，采用字符串类型的银行标识。银行标识请参考[《银行类型对照表》](/merchant-articles/development/chart/bank-type.md。 */
+  bank_type: string
+  /** 附加数据，在查询API和支付通知中原样返回，可作为自定义参数使用，实际情况下只有支付完成状态才会返回该字段。 */
+  attach?: string
+  /** 支付完成时间，遵循rfc3339标准格式，格式为yyyy-MM-DDTHH:mm:ss+TIMEZONE，yyyy-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss表示时分秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35+08:00表示，北京时间2015年5月20日 13点29分35秒。 */
+  success_time: string
+  /** 支付者信息 */
+  payer: object
+  /** 订单金额信息 */
+  amount: object
+  /** 支付场景信息描述 */
+  scene_info?: object
+  /** 优惠功能，享受优惠时返回该字段 */
+  promotion_detail?: any[]
 }
