@@ -9,7 +9,7 @@ export function getType(type: string) {
   return type
 }
 
-export function writeTypes(desc: IDesc, types: IType[]) {
+export function writeTypes(dir: string, desc: IDesc, types: IType[]) {
   const fileDesc = `/**
  * @title ${desc.title}
  * @subTitle ${desc.subTitle}
@@ -33,5 +33,6 @@ export function writeTypes(desc: IDesc, types: IType[]) {
       typeString += `export type ${item.name} = ${item.type}\n`
     }
   }
-  fs.writeFileSync(path.resolve(process.cwd(), 'types', desc.fileName), typeString, 'utf-8')
+  fs.mkdirSync(dir, { recursive: true })
+  fs.writeFileSync(path.resolve(dir, desc.fileName), typeString, 'utf-8')
 }

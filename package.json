@@ -6,7 +6,7 @@
   "module": "types/index.ts",
   "types": "types/index.ts",
   "scripts": {
-    "gen": "tsx src/index.ts",
+    "build": "tsx src/index.ts && tsx src/entry.ts && npm run lint",
     "lint": "tsc types/*.ts --noEmit --pretty"
   },
   "keywords": [

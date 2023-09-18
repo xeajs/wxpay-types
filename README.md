@@ -1,6 +1,6 @@
 # wxpay-types
 
-根据微信支付文档内容，使用脚本自动生成对应的 ts 类型文件，在对接微信支付时，就不需要依赖别的很久没有维护的 SDK，直接自己写接口就能快速调用搞定
+Nodejs 微信支付 Typescript 类型大全， 一比一还原微信支付文档接口请求、响应类型，字段类型以及字段说明，助力Nodejs下的微信支付开发
 
 ### Install
 
@@ -11,8 +11,23 @@ pnpm add wxpay-types
 ### Import
 
 ```ts
-import { JsapiPrepayReqBody, JsapiPrepayRes } from "wxpay-types";
+import { jsapi, weapp } from "wxpay-types";
+// or
+import * as WXPayTypes from 'wxpay-types'
 ```
+
+
+### 支持的产品
+|  产品名   | 类型名  | 支持情况 |
+|  :----:  | :----:  | :----: |
+| [JSAPI支付](https://pay.weixin.qq.com/docs/merchant/apis/jsapi-payment/direct-jsons/jsapi-prepay.html) | jsapi | 支持 |
+| [APP支付](https://pay.weixin.qq.com/docs/merchant/apis/in-app-payment/direct-jsons/app-prepay.html) | - | - |
+| [H5支付](https://pay.weixin.qq.com/docs/merchant/apis/h5-payment/direct-jsons/h5-prepay.html) | - | - |
+| [Native支付](https://pay.weixin.qq.com/docs/merchant/apis/native-payment/direct-jsons/native-prepay.html) | - | - |
+| [小程序支付](https://pay.weixin.qq.com/docs/merchant/apis/mini-program-payment/mini-prepay.html)  | weapp | 支持 |
+| [合单支付](https://pay.weixin.qq.com/docs/merchant/apis/combine-payment/orders/jsapi-prepay.html)  | - | - |
+| [资金/交易账单](https://pay.weixin.qq.com/docs/merchant/apis/bill-download/trade-bill/get-trade-bill.html)  | - | - |
+| [退款](https://pay.weixin.qq.com/docs/merchant/apis/refund/refunds/create.html)  | - | - |
 
 ### File Content
 
@@ -75,4 +90,4 @@ export type CommReqSceneInfo = {
 };
 ```
 
-查看更多: https://www.npmjs.com/package/wxpay-types?activeTab=code
+[查看更多](https://github.com/xeajs/wxpay-types/tree/master/types/index.ts)
